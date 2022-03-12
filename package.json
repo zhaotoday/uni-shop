@@ -1,8 +1,14 @@
 {
   "name": "uni-shop",
   "version": "1.0.0",
-  "description": "",
+  "description": "uni shop",
   "main": "index.js",
   "author": "zhaojintian",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jt-helpers": "1.0.11",
+    "vuex": "4.0.2",
+    "vuex-composition-helpers": "1.1.0",
+    "wx-bridge": "0.0.39"
+  }
 }
