@@ -1,4 +1,5 @@
 import wx from "wx-bridge";
+import { useConsts } from "@/composables/use-consts";
 import { store } from "@/store";
 import { createNamespacedHelpers } from "vuex-composition-helpers";
 
@@ -28,12 +29,15 @@ export const useCart = () => {
   // 在非 tab-bar 页面无法更新 TabBarBadge，
   // 所以必须在每个 tab-bar 页面的 onShow 中更新 TabBarBadge
   const renderProductsNumber = () => {
+    const cartTabBarIndex = useConsts().CartTabBarIndex;
     const count = products.value.length;
 
-    if (count) {
-      wx.setTabBarBadge({ index: 2, text: count + "" });
-    } else {
-      wx.removeTabBarBadge({ index: 2 });
+    if (cartTabBarIndex) {
+      if (count) {
+        wx.setTabBarBadge({ index: cartTabBarIndex, text: count + "" });
+      } else {
+        wx.removeTabBarBadge({ index: cartTabBarIndex });
+      }
     }
   };
 
