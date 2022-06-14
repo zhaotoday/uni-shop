@@ -1,4 +1,4 @@
-import { keyMirror } from "jt-helpers";
+import { keyMirror, formatNumber } from "jt-helpers";
 
 const types = keyMirror({
   UpdateProductNumber: null,
@@ -19,9 +19,11 @@ const getters = {
     const selectedProducts = state.products.filter(({ selected }) => selected);
 
     if (selectedProducts.length) {
-      return selectedProducts
-        .map(({ price, number }) => price * number)
-        .reduce((prev, current) => prev + current);
+      return formatNumber(
+        selectedProducts
+          .map(({ price, number }) => price * number)
+          .reduce((prev, current) => prev + current)
+      );
     } else {
       return 0;
     }
