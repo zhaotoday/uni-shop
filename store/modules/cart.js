@@ -53,7 +53,9 @@ const mutations = {
     }
   },
   [types.SelectProduct](state, { product }) {
-    product.selected = !product.selected;
+    const foundProduct = state.products.find((item) => item.id === product.id);
+
+    foundProduct.selected = !foundProduct.selected;
   },
   [types.SelectAllProducts](state, { selected }) {
     state.products = state.products.map((item) => ({ ...item, selected }));
